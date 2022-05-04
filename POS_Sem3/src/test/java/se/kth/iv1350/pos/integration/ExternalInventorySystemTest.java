@@ -22,8 +22,7 @@ private boolean itemCheckTrue = true;
     @BeforeEach
     public void setUp() {
         itemInfo1 = new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.25, 10);
-        itemInfo2 = new ItemInformationDTO("Milk", "MilkBarCode", 11, 0.25, 4);
-        itemInfo3 = new ItemInformationDTO();
+      
     }
     
     @AfterEach
@@ -38,7 +37,7 @@ private boolean itemCheckTrue = true;
         String itemIdentifier = "AppleBarCode";
         ItemInformationDTO expResult = itemInfo1;
         
-        ItemInformationDTO result = inventoryInstance.getItemInformation(itemIdentifier);
+        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier);
         assertEquals(expResult, result, "The item was not found in the inventory");
     }
 
@@ -50,7 +49,7 @@ private boolean itemCheckTrue = true;
         String itemIdentifier = "RandomBarCode";
         ItemInformationDTO expResult = null;
         
-        ItemInformationDTO result = inventoryInstance.getItemInformation(itemIdentifier);
+        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier);
         assertEquals(expResult, result, "The item was not found in the inventory");
     }
 }

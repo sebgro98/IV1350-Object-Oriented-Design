@@ -41,34 +41,34 @@ public class ItemInformationDTO {
      * @return. Returns the name of the item.
      */
     public String getItemName(){
-        return this.itemName; 
+        return itemName; 
     }
 
     /**
      * @return. Returns the itemIdentifier of the item.
      */
     public String getItemIdentifier(){
-        return this.itemIdentifier; 
+        return itemIdentifier; 
     }
 
     /**
      * @return. Returns the price of the item.
      */
     public double getItemPrice(){
-        return this.itemPrice;
+        return itemPrice;
     } 
 
     /**
      * @return. Returns the VATRate of the item.
      */
     public double getItemVATRate(){
-        return this.itemVATRate;
+        return itemVATRate;
     }
 
     /**
      * @return. Returns the quantity of the item.
      */
-    public double getItemQuantity(){
-        return this.quantity;
+    public int getItemQuantity(){
+        return quantity;
     }
 }

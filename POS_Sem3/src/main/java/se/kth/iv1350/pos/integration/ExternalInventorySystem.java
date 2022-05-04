@@ -6,36 +6,40 @@ import se.kth.iv1350.pos.model.*;
  *  
  */
 public class ExternalInventorySystem {
+    
     private ArrayList<ItemInformationDTO> itemList = new ArrayList<ItemInformationDTO>();
- 
+    
     /**
     *  An instance of the External Inventory System.
     */
     public ExternalInventorySystem() {
+        itemList.add(new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.13, 10));
+        
     } 
+    /**
+     *  Adds a new item to the inventory where all the information about the items are stored.
+     * @param item The item that is added to the inventory
+     */
+       public void addItem (ItemInformationDTO item) {
+        if(item != null) {
+            itemList.add(item);
+        }
+    }
+    
     /**
      *  This method looks for the item that has the same item identifier as the one scanned by the cashier. if it is the same
     * 
     * @param itemIdentifier This is the barcode that is getting scanned to get information about the item
     * @return if the item doesn't exist return null.
     */
-    public ItemInformationDTO getItemInformation (String itemIdentifier) {   
-        for (ItemInformationDTO itemsInInventoryLoopVariable : itemList) {
-            if (itemsInInventoryLoopVariable.getItemIdentifier().equals(itemIdentifier)) {
-                return itemsInInventoryLoopVariable;       
+  public ItemInformationDTO getItemInfomation (String itemIdentifier){
+        for (int i = 0; i < itemList.size(); i++) {
+            if (itemList.get(i).getItemIdentifier().equals(itemIdentifier)) {
+                return itemList.get(i);
             }
         }
-        return null;
-       
-    }
-    /**
-     *  Adds a new item to the inventory where all the information about the items are stored.
-     * @param item The item that is added to the inventory
-     */
-        public void addItem (ItemInformationDTO item) {
-        if(item != null) {
-            itemList.add(item);
-        }
+
+    return null; 
     }
     
     /**

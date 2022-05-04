@@ -13,7 +13,7 @@ import se.kth.iv1350.pos.model.StoreAddress;
  */
 public class Controller {
     private Sale sale;
-    private ExternalInventorySystem externalinventorySystem; 
+    private ExternalInventorySystem externalinventorySystem = new ExternalInventorySystem(); 
     private ExternalAccountingSystem externalAccountingSystem; 
     private boolean itemCheck;
     private Payment payment;
@@ -40,12 +40,13 @@ public class Controller {
     
     /**
      *  This method calls for externalinventorysystem to get information about the item that is getting scanned
-     * @param itemIdentifier A barcode that represents a specifict item
+     * @param itemIdentifier A barcode that represents a specific item
      * @param itemQuantity Number of that item
      * @return returns information about that said item or null if it doesn't exist.
      */
     public ItemInformationDTO getItemInfo (String itemIdentifier) {
-        ItemInformationDTO itemInfo = externalinventorySystem.getItemInformation(itemIdentifier);
+        ItemInformationDTO itemInfo = externalinventorySystem.getItemInfomation(itemIdentifier);
+        itemCheck = itemAlreadyRegistered(itemIdentifier);
         sale.addItem(itemInfo, itemCheck);
             return itemInfo;
     }
