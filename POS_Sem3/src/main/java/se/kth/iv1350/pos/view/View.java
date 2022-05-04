@@ -27,22 +27,20 @@ public class View {
         contr.startSale();
         System.out.println("A new sale has been started.");
       
-       System.out.println("Gets the information about the items whith the bara code that is in inventory system");
+       System.out.println("Gets the information about the items whith the barcode that is in the inventory system");
         ItemInformationDTO itemInformation = contr.getItemInfo("AppleBarCode"); 
         double itemPrice = itemInformation.getItemPrice(); 
         String barcode = itemInformation.getItemIdentifier(); 
-        String itemName = itemInformation.getItemName(); 
-        System.out.println(barcode);
-        System.out.println(itemName);
-        System.out.println(itemPrice);
-
+        String itemName = itemInformation.getItemName();
+        int itemQuantity = itemInformation.getItemQuantity();
         boolean register = contr.itemAlreadyRegistered("AppleBarCode");
-        //false because it is not registered in sale yet. 
-        System.out.println(register);
         
-        //The total price of the sale
-        
-        System.out.println(contr.runningTotal());
+         System.out.println("Is " + barcode + " already registered in the sale?: " + register);
+        System.out.println("The code for the item is: " + barcode);
+        System.out.println("The scanned item name is: " + itemName);
+        System.out.println("The scanned item price is: " + itemPrice + "kr");
+        System.out.println("The quantity of the item is: " + itemQuantity);
+         System.out.println("The total price of the full sale is: " + contr.runningTotal());
         
         //
     }

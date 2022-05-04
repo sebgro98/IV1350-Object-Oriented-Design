@@ -13,7 +13,7 @@ import se.kth.iv1350.pos.model.StoreAddress;
  */
 public class Controller {
     private Sale sale;
-    private ExternalInventorySystem externalinventorySystem = new ExternalInventorySystem(); 
+    private ExternalInventorySystem externalinventorySystem = new ExternalInventorySystem();
     private ExternalAccountingSystem externalAccountingSystem; 
     private boolean itemCheck;
     private Payment payment;
