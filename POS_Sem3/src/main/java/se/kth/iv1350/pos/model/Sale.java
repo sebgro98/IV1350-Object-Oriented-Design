@@ -9,8 +9,6 @@ public class Sale {
     LocalTime saleTime;
     private Receipt receipt;
     private ArrayList<ItemInformationDTO> itemList = new ArrayList<ItemInformationDTO>();
-    private double change;
-    private double runningTotal;
     private double totalAmount;
     /**
      * Creates an instance and saves the time of the sale.
@@ -46,7 +44,7 @@ public class Sale {
     
     public void addItem (ItemInformationDTO item, boolean itemCheck) {
         if(item != null && itemCheck == false) {
-            itemList.add(item);
+             itemList.add(new ItemInformationDTO(item.getItemName(), item.getItemIdentifier(), item.getItemPrice(), item.getItemVATRate(), item.getItemQuantity())); 
         }
       
     }
@@ -64,9 +62,11 @@ public class Sale {
      * @return runningTotal 
      */
     public double countRunningTotal() {
-        for (int itemInItemList = 0; itemInItemList < itemList.size(); itemInItemList++) 
-            runningTotal += itemList.get(itemInItemList).quantity * itemList.get(itemInItemList).getItemPrice();
-          return runningTotal;    
+        double runningTotal = 0; 
+        for(int itemInItemList = 0; itemInItemList < itemList.size(); itemInItemList++){
+            runningTotal +=  itemList.get(itemInItemList).quantity * itemList.get(itemInItemList).getItemPrice();  
+        }
+        return runningTotal; 
     }
     
     public double getTotalAmount() {

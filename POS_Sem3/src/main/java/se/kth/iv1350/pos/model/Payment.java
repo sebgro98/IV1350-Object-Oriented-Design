@@ -9,13 +9,11 @@ public class Payment {
     
     /**
      * Creates an instance of the class payment
-     * @param sale has all the information about the entire sale.
-     * @param cashPayed the amount that has been payed.
+     * 
      */
     
-    public Payment(double cashPayed) {
-        this.payedAmount = payedAmount;
-        this.sale  = sale;
+    public Payment() {
+   
     }
     /**
      *  This method counts how much money to the costumer should get back.

@@ -18,6 +18,7 @@ private ItemInformationDTO itemInfo1;
     
     @AfterEach
     public void tearDown() {
+        itemInfo1 = null;
     }
 
     @Test
@@ -27,7 +28,7 @@ private ItemInformationDTO itemInfo1;
         double cashPayed = 100;
         double expResult = 20;
         
-        Payment payment = new Payment(cashPayed);
+        Payment payment = new Payment();
         double result = payment.changeToGiveCostumer(sale, cashPayed);
         assertEquals(expResult, result, "They are not equal");
     

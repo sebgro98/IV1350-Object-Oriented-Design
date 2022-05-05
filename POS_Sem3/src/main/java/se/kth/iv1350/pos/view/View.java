@@ -33,6 +33,7 @@ public class View {
         String barcode = itemInformation.getItemIdentifier(); 
         String itemName = itemInformation.getItemName();
         int itemQuantity = itemInformation.getItemQuantity();
+        double getItemVATRate = itemInformation.getItemVATRate(); 
         boolean register = contr.itemAlreadyRegistered("AppleBarCode");
         
          System.out.println("Is " + barcode + " already registered in the sale?: " + register);
@@ -40,7 +41,11 @@ public class View {
         System.out.println("The scanned item name is: " + itemName);
         System.out.println("The scanned item price is: " + itemPrice + "kr");
         System.out.println("The quantity of the item is: " + itemQuantity);
+        System.out.println("item Vat Rate, " + getItemVATRate);
          System.out.println("The total price of the full sale is: " + contr.runningTotal());
+         System.out.println("The total amount for the sale, "+ contr.totalAmount());
+         System.out.println("Returns how much change to give customer, " + contr.registerPayment(300.2));
+         
         
         //
     }

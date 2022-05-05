@@ -38,10 +38,10 @@ public class SaleTest {
         saleInstance.addItem(itemInfo1, itemCheckFalse);
         ArrayList<ItemInformationDTO> testItemList = saleInstance.getListOfItems();
        
-        ArrayList<ItemInformationDTO> goodList = new ArrayList<ItemInformationDTO>(); 
-         goodList.add(itemInfo1);
+        ArrayList<ItemInformationDTO> goodItemList = new ArrayList<ItemInformationDTO>(); 
+         goodItemList.add(itemInfo1);
          
-           assertEquals(goodList.get(0), testItemList.get(0), "The items in the two lists are not the same");
+          assertEquals(testItemList.get(0).getItemIdentifier(), goodItemList.get(0).getItemIdentifier(), "The items in the two lists are not the same"); 
                
     }
    @Test
@@ -54,7 +54,7 @@ public class SaleTest {
         ArrayList<ItemInformationDTO> goodsItemList = new ArrayList<ItemInformationDTO>();  
         goodsItemList.add(itemInfo2); 
         
-        assertEquals(testItemList.get(0), goodsItemList.get(0), "Item added when it is already registered");  
+        assertEquals(testItemList.get(0).getItemIdentifier(), goodsItemList.get(0).getItemIdentifier(), "Item added when it is already registered");
     }
 
     
@@ -66,14 +66,14 @@ public class SaleTest {
         saleInstance.addItem(itemInfo3, itemCheckFalse);
         ArrayList<ItemInformationDTO> testItemList = saleInstance.getListOfItems();
         
-        ArrayList<ItemInformationDTO> goodList = new ArrayList<ItemInformationDTO>();
-         goodList.add(itemInfo1);
-         goodList.add(itemInfo2);
-         goodList.add(itemInfo3);
+        ArrayList<ItemInformationDTO> goodsItemList = new ArrayList<ItemInformationDTO>();
+         goodsItemList.add(itemInfo1);
+         goodsItemList.add(itemInfo2);
+         goodsItemList.add(itemInfo3);
          
-           assertEquals(goodList.get(0), testItemList.get(0), "The items1 in the two lists are not the same");
-           assertEquals(goodList.get(1), testItemList.get(1), "The items2 in the two lists are not the same");
-           assertEquals(goodList.get(2), testItemList.get(2), "The items3 in the two lists are not the same");
+           assertEquals(testItemList.get(0).getItemIdentifier(), goodsItemList.get(0).getItemIdentifier(), "The items1 in the two lists are not the same");   
+        assertEquals(testItemList.get(1).getItemIdentifier(), goodsItemList.get(1).getItemIdentifier(), "The items2 in the two lists are not the same");
+        assertEquals(testItemList.get(2).getItemIdentifier(), goodsItemList.get(2).getItemIdentifier(), "The items3 in the two lists are not the same");
         }
 
  @Test

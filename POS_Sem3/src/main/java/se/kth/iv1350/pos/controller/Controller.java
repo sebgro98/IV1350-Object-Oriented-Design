@@ -16,7 +16,7 @@ public class Controller {
     private ExternalInventorySystem externalinventorySystem = new ExternalInventorySystem();
     private ExternalAccountingSystem externalAccountingSystem; 
     private boolean itemCheck;
-    private Payment payment;
+    private Payment payment = new Payment();
     private double change;
     private Receipt receipt;
     private Printer printer;
@@ -56,14 +56,19 @@ public class Controller {
      */
     
     public double runningTotal() {
-        return sale.getTotalAmount();
+         double runningTotal = sale.countRunningTotal();
+        return runningTotal;
     }
+    
+     public double totalAmount(){
+        return sale.getTotalAmount();
+     }
     /**
      * This method get the change that is needed to give to the customer
      * @param amountPayedByCostumer The amount payed by the customer 
      * @return the money to give back to the costumer.
      */
-    public double registerPayment(double amountPayedByCostumer, Sale sale) {
+    public double registerPayment(double amountPayedByCostumer) {
         change = payment.changeToGiveCostumer(sale, amountPayedByCostumer);
         return change;
     }
