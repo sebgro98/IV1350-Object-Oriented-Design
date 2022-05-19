@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: se.kth.iv1350.pos.view.ViewTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in se.kth.iv1350.pos.view.ViewTest
+testRunFakeExecution  Time elapsed: 0 s  <<< ERROR!
+java.lang.RuntimeException: 
+Uncompilable code - cannot find symbol
+  symbol:   method getItemInfo(java.lang.String,int)
+  location: variable contr of type se.kth.iv1350.pos.controller.Controller
+	at se.kth.iv1350.pos.view.ViewTest.testRunFakeExecution(ViewTest.java:37)
+

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: se.kth.iv1350.pos.integration.ExternalInventorySystemTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.007 s <<< FAILURE! - in se.kth.iv1350.pos.integration.ExternalInventorySystemTest
+testGetItemInformation  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.ExceptionInInitializerError
+	at se.kth.iv1350.pos.integration.ExternalInventorySystemTest.<init>(ExternalInventorySystemTest.java:15)
+Caused by: java.lang.RuntimeException: Uncompilable code - illegal start of expression
+	at se.kth.iv1350.pos.integration.ExternalInventorySystemTest.<init>(ExternalInventorySystemTest.java:15)
+

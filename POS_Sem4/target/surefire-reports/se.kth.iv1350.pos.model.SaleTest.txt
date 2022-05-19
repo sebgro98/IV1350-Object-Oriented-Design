@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: se.kth.iv1350.pos.model.SaleTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in se.kth.iv1350.pos.model.SaleTest
+testAddMultipleItem  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testCountRunningTotal  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testAddOneItem  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testCheckIfItemAlreadyRegistered  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testGetTotalAmount  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testAddOneItemAlreadyRegister  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+
+testCheckIfItemIsNotRegistered  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.SaleTest.<init>(SaleTest.java:15)
+

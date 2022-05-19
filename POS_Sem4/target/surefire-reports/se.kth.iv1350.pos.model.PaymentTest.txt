@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: se.kth.iv1350.pos.model.PaymentTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in se.kth.iv1350.pos.model.PaymentTest
+testChangeToGiveCostumer  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class se.kth.iv1350.pos.model.Sale
+	at se.kth.iv1350.pos.model.PaymentTest.setUp(PaymentTest.java:15)
+
