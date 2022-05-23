@@ -30,7 +30,7 @@ public class PaymentTest {
         double expResult = 50;
 
         Payment payment = new Payment(); 
-        double result = payment.changeToGiveCostumer(sale, cashPayed);
+        double result = payment.changeToGiveCustomer(sale.getTotalAmount(), cashPayed);
 
         assertEquals(expResult, result, "The test case is a prototype.");
     }

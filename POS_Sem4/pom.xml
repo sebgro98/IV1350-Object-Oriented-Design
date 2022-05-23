@@ -51,4 +51,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>Sem4</name>
 </project>

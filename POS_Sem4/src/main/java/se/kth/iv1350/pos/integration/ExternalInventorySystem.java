@@ -15,6 +15,9 @@ public class ExternalInventorySystem {
     public ExternalInventorySystem() {
         itemList.add(new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.13, 10));
         itemList.add(new ItemInformationDTO("Milk", "MilkBarCode", 10, 0.11, 2));
+        itemList.add(new ItemInformationDTO("Milk", "1", 10, 0.11, 6));
+        itemList.add(new ItemInformationDTO("Milk", "2", 5, 0.11, 6));
+        itemList.add(new ItemInformationDTO("Milk", "4", 10, 0.11, 6));
         
     } 
     /**
@@ -45,7 +48,7 @@ public class ExternalInventorySystem {
                 throw new DatabaseServerNotRunning("The database is currently offline");
             }
             else{
-                throw new ItemNotFoundInInventoryException("This item with itemIdentifier: "+ itemIdentifier+ " was not fount in inventory" );
+                throw new ItemNotFoundInInventoryException("This item with itemIdentifier: "+ itemIdentifier+ " was not found in inventory" );
             }
         }
         

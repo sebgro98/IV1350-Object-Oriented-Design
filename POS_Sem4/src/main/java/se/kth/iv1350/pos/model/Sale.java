@@ -96,9 +96,18 @@ public class Sale {
      */
     public double getTotalAmount() {
         totalAmount = countRunningTotal();
-        notifyObservers();
         return totalAmount; 
         
+    }
+    
+        /**
+     * This method registers payment payed by customer.
+     * @param amoutPayedByCustomer  the cash payed by costumer. 
+     * @return the total amount of the sale 
+     */
+    public double registerPayment(double amoutPayedByCustomer){
+        notifyObservers();
+        return getTotalAmount();
     }
     
 /**

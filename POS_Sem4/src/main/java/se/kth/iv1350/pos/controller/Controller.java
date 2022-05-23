@@ -1,14 +1,13 @@
 package se.kth.iv1350.pos.controller;
+
+import se.kth.iv1350.pos.model.*;
+import se.kth.iv1350.pos.util.*;
+
+
 import java.util.ArrayList;
 import java.util.List;
-import se.kth.iv1350.pos.model.Sale;
+
 import se.kth.iv1350.pos.integration.*;
-import se.kth.iv1350.pos.model.ItemInformationDTO;
-import se.kth.iv1350.pos.model.Payment;
-import se.kth.iv1350.pos.model.Receipt;
-import se.kth.iv1350.pos.model.RevenueObserver;
-import se.kth.iv1350.pos.model.StoreAddress;
-import se.kth.iv1350.pos.util.LogWriter;
 
 /**
  * This is the applications only controller. All calls to the model pass through this class
@@ -23,7 +22,7 @@ public class Controller {
     private Receipt receipt; 
     private StoreAddress storeAddress; 
     Payment Payment = new Payment();
-    private LogWriter log; 
+    private LogWriter log = new LogWriter(); 
     private List<RevenueObserver> revenueObservers = new ArrayList<>();
     /**
      * Start a new sale. This method must be called before doing anything else 
@@ -71,20 +70,14 @@ public class Controller {
         double runningTotal = sale.countRunningTotal();
         return runningTotal;
     }
-    
-    /**
-     * @return This method returns the Total amount of the entire sale. 
-     */
-    public double totalAmount(){
-        return sale.getTotalAmount(); 
-    }
 
     /**
      * @param amountPayed This is the amount payed by the customer.
      * @return this method gets the change that is needed to give to the customer. 
      */
     public double registerPayment (double amountPayed){ 
-        change = Payment.changeToGiveCostumer(sale, amountPayed);
+         double totalAmount = sale.registerPayment(amountPayed);
+        change = Payment.changeToGiveCustomer(totalAmount, amountPayed);
         return change; 
     }
 
@@ -101,6 +94,13 @@ public class Controller {
      */
     public void updateInventorySystem(Sale sale){
         externelInventorySystem.updateInventory(sale);
+    }
+    
+     /**
+     * @return This method returns the Total amount of the entire sale. 
+     */
+    public double totalAmount(){
+        return sale.getTotalAmount(); 
     }
 
     /**
