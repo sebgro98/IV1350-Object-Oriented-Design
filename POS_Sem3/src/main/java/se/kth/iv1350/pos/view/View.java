@@ -28,23 +28,21 @@ public class View {
         System.out.println("A new sale has been started.");
       
        System.out.println("Gets the information about the items whith the barcode that is in the inventory system");
-        ItemInformationDTO itemInformation = contr.getItemInfo("AppleBarCode"); 
+        ItemInformationDTO itemInformation = contr.scanItem("AppleBarCode", 10); 
         double itemPrice = itemInformation.getItemPrice(); 
         String barcode = itemInformation.getItemIdentifier(); 
         String itemName = itemInformation.getItemName();
         int itemQuantity = itemInformation.getItemQuantity();
         double getItemVATRate = itemInformation.getItemVATRate(); 
-        boolean register = contr.itemAlreadyRegistered("AppleBarCode");
-        
-         System.out.println("Is " + barcode + " already registered in the sale?: " + register);
+
+        System.out.println("An item has been scanned: " + itemName);
         System.out.println("The code for the item is: " + barcode);
-        System.out.println("The scanned item name is: " + itemName);
         System.out.println("The scanned item price is: " + itemPrice + "kr");
         System.out.println("The quantity of the item is: " + itemQuantity);
-        System.out.println("item Vat Rate, " + getItemVATRate);
-         System.out.println("The total price of the full sale is: " + contr.runningTotal());
-         System.out.println("The total amount for the sale, "+ contr.totalAmount());
-         System.out.println("Returns how much change to give customer, " + contr.registerPayment(300.2));
+        System.out.println("item Vat Rate, " + getItemVATRate + "%");
+        System.out.println("The running total of the sale is: " + contr.runningTotal());
+        System.out.println("The total amount for the sale, "+ contr.totalAmount());
+        System.out.println("Returns how much change to give customer, " + contr.registerPayment(300));
          
         
         //

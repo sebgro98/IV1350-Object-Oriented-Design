@@ -1,20 +1,15 @@
 package se.kth.iv1350.pos.integration;
 
-import java.util.ArrayList;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import se.kth.iv1350.pos.model.ItemInformationDTO;
-import se.kth.iv1350.pos.model.Sale;
+
 
 public class ExternalInventorySystemTest {
 private ItemInformationDTO itemInfo1;
-private ItemInformationDTO itemInfo2;
-private ItemInformationDTO itemInfo3;
-private Sale saleInstance = new Sale();
-private boolean itemCheckFalse= false;
-private boolean itemCheckTrue = true;
+
     
     public ExternalInventorySystemTest() {
     }
@@ -30,26 +25,28 @@ private boolean itemCheckTrue = true;
     }
 
     @Test
-    public void testGetItemInformation() {
+     public void testGetItemInformation() {
         ExternalInventorySystem inventoryInstance = new ExternalInventorySystem();
         inventoryInstance.addItem(itemInfo1);
-        
+
         String itemIdentifier = "AppleBarCode";
         ItemInformationDTO expResult = itemInfo1;
-        
-        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier);
-        assertEquals(expResult, result, "The item was not found in the inventory");
+
+        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier, 10);
+        assertEquals(expResult.getItemIdentifier(), result.getItemIdentifier(), "The item was not fount in inventory");
+        assertEquals(expResult.getItemName(), result.getItemName(), "The item was not fount in inventory");
+        assertEquals(expResult.getItemPrice(), result.getItemPrice(), "The item was not fount in inventory");
     }
 
 @Test
-    public void testGetItemInformationNull() {
+   public void testGetItemInformationNull() {
         ExternalInventorySystem inventoryInstance = new ExternalInventorySystem();
         inventoryInstance.addItem(itemInfo1);
-        
-        String itemIdentifier = "RandomBarCode";
+
+        String itemIdentifier = "OrgangebarCode";
         ItemInformationDTO expResult = null;
-        
-        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier);
-        assertEquals(expResult, result, "The item was not found in the inventory");
+
+        ItemInformationDTO result = inventoryInstance.getItemInfomation(itemIdentifier, 10);
+        assertEquals(expResult, result, "The item was not fount in inventory");
     }
 }

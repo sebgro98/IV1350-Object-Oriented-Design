@@ -21,9 +21,14 @@ public class Payment {
      * @param payedAmount the amount that was payed
      * @return the change to give back.
      */
-    public double changeToGiveCostumer(Sale sale, double payedAmount) {
-       changeForTheCostumer = payedAmount - sale.getTotalAmount();
-        return changeForTheCostumer;    
+    public double changeToGiveCustomer(Sale sale, double payedAmount){
+        this.payedAmount = payedAmount;
+        changeForTheCostumer =  payedAmount - sale.getTotalAmount(); 
+        return changeForTheCostumer; 
+    }
+    
+    public double getPayedAmount(){
+        return this.payedAmount;
     }
     
 }

@@ -1,6 +1,7 @@
 package se.kth.iv1350.pos.model;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import se.kth.iv1350.pos.integration.ExternalInventorySystem;
 
 /**
  * One single sale made by one single customer and payed with one payment.
@@ -10,6 +11,9 @@ public class Sale {
     private Receipt receipt;
     private ArrayList<ItemInformationDTO> itemList = new ArrayList<ItemInformationDTO>();
     private double totalAmount;
+    private ExternalInventorySystem externelInventorySystem = new ExternalInventorySystem();
+    private int itemInItemList;
+    private boolean itemCheck;
     /**
      * Creates an instance and saves the time of the sale.
      */
@@ -25,28 +29,45 @@ public class Sale {
      * been scanned before and should only add quantity
      */
     public boolean checkIfItemAlreadyRegistered(String itemIdentifier ) {
-      for (int itemInItemList = 0; itemInItemList < itemList.size(); itemInItemList++) {
-          if(itemIdentifier.equals(itemList.get(itemInItemList).getItemIdentifier())); {
-            itemList.get(itemInItemList).quantity += 1;
-            return true;
+         for( itemInItemList = 0; itemInItemList < itemList.size(); itemInItemList++) {
+            if(itemIdentifier.equals(itemList.get(itemInItemList).getItemIdentifier())) {
+                return true; 
             }
-         
-         }
-        return false;
         }
+    return false; 
+    }
     
     /**
-     * Adds a new itemList where all the information about all the items scanned are stored, if the item has already been
-     * registered it just adds more of the same item.
-     * @param item has the information about the item
-     * @param itemCheck A boolean that is true if the item has already been registered once before.
+     * If an item is already been registered this method increases the quantity of the item. 
+     * @param itemIdentifier A number or bar code that represents a specific item.
+     * @param quantity the quantity of an item
      */
+    public ItemInformationDTO increaseQuantity (String itemIdentifier, int quantity){
+        itemList.get(itemInItemList).quantity += quantity; 
+        return itemList.get(itemInItemList); 
+    }
     
-    public void addItem (ItemInformationDTO item, boolean itemCheck) {
-        if(item != null && itemCheck == false) {
+    
+     /**
+     * This method calls for externelInventorySystem to get information about a specefic item.
+     * and adds it to the sale but if an item already has been registered it just adds up the quantity. 
+     * @param itemIdentifier: A code that represents an specific item. 
+     * @param qiantity: the quantity of the item 
+     * @return : returns the information about the item. But if it is already registered it returns the information 
+     *                with the updated quantity. 
+    */
+    
+     public ItemInformationDTO addItem(String itemIdentifier, int quantity){
+        itemCheck = checkIfItemAlreadyRegistered(itemIdentifier);
+        if (itemCheck == false) {
+            ItemInformationDTO item = externelInventorySystem.getItemInfomation(itemIdentifier, quantity); 
              itemList.add(new ItemInformationDTO(item.getItemName(), item.getItemIdentifier(), item.getItemPrice(), item.getItemVATRate(), item.getItemQuantity())); 
+             return item; 
         }
-      
+        else{
+            ItemInformationDTO item = increaseQuantity(itemIdentifier, quantity);
+            return item; 
+            }
     }
     /**
      * Method that Returns the current list of items in the sale.

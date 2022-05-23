@@ -11,8 +11,7 @@ private ItemInformationDTO itemInfo1;
 
     
     @BeforeEach
-    public void setUp() {
-        Sale sale = new Sale();
+    public void setUp() {;
          itemInfo1 = new ItemInformationDTO("Apple", "AppleBarCode", 8, 0.13, 10);
     }
     
@@ -22,16 +21,16 @@ private ItemInformationDTO itemInfo1;
     }
 
     @Test
-    public void testChangeToGiveCostumer() {
-        Sale sale = new Sale();
-        sale.addItem(itemInfo1, itemCheck);
-        double cashPayed = 100;
-        double expResult = 20;
-        
-        Payment payment = new Payment();
-        double result = payment.changeToGiveCostumer(sale, cashPayed);
-        assertEquals(expResult, result, "They are not equal");
-    
+     public void testChangeToGiveCostumer() {
+        Sale sale = new Sale(); 
+        sale.addItem("AppleBarCode", 10);
+        double cashPayed = 200;
+        double expResult = 50;
+
+        Payment payment = new Payment(); 
+        double result = payment.changeToGiveCustomer(sale, cashPayed);
+
+        assertEquals(expResult, result, "The test case is a prototype.");
     }
     
 }

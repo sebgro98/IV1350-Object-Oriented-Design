@@ -37,7 +37,7 @@ public class StoreAddress {
     }
 
     /**
-     * Returns the zipcode for the store.
+     * Returns the zip code for the store.
      */
     
     public String getZipCode(){

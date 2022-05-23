@@ -30,13 +30,13 @@ public class Receipt {
         this.sale = sale;
         this.storeAdress = storeAdress;
         this.payment = payment;
-        this.change = payment.changeToGiveCostumer(sale, paidAmount);
+        this.change = payment.changeToGiveCustomer(sale, payment.getPayedAmount()); 
         this.saleTime = sale.saleTime;
         this.totalPrice = sale.getTotalAmount();
         this.listOfItems = sale.getListOfItems();
     }
    
-    public StoreAddress getStoreAdress() {
+    public StoreAddress getStoreAddress() {
     return storeAdress;
     }
     

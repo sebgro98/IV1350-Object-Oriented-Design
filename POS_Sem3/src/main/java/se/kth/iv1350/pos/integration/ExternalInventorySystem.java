@@ -14,6 +14,7 @@ public class ExternalInventorySystem {
     */
     public ExternalInventorySystem() {
         itemList.add(new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.13, 10));
+        itemList.add(new ItemInformationDTO("Milk", "MilkBarCode", 10, 0.11, 2));
         
     } 
     /**
@@ -32,7 +33,7 @@ public class ExternalInventorySystem {
     * @param itemIdentifier This is the barcode that is getting scanned to get information about the item
     * @return if the item doesn't exist return null.
     */
-  public ItemInformationDTO getItemInfomation (String itemIdentifier){
+  public ItemInformationDTO getItemInfomation (String itemIdentifier, int quantity){
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getItemIdentifier().equals(itemIdentifier)) {
                 return itemList.get(i);
