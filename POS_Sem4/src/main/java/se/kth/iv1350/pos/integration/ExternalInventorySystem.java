@@ -51,12 +51,9 @@ public class ExternalInventorySystem {
                 throw new DatabaseServerNotRunning("The database is currently offline");
             }
         }
-            if( "ItemNonExsisting".equals(itemIdentifier) )   {
-                throw new ItemNotFoundInInventoryException("This item with itemIdentifier: "+ itemIdentifier+ " was not found in inventory" );
-            }
-            
-    return null; 
-    }
+          
+        throw new ItemNotFoundInInventoryException("This item with itemIdentifier: "+ itemIdentifier+ " was not found in inventory" );
+}
     
     /**
      * updates the inventory when the sale ends
