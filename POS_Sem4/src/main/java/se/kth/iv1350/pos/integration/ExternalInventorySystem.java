@@ -12,14 +12,15 @@ public class ExternalInventorySystem {
     /**
     *  An instance of the External Inventory System.
     */
-    public ExternalInventorySystem() {
-        itemList.add(new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.13, 10));
-        itemList.add(new ItemInformationDTO("Milk", "MilkBarCode", 10, 0.11, 2));
-        itemList.add(new ItemInformationDTO("Milk", "1", 10, 0.11, 6));
-        itemList.add(new ItemInformationDTO("Milk", "2", 5, 0.11, 6));
-        itemList.add(new ItemInformationDTO("Milk", "4", 10, 0.11, 6));
+    public ExternalInventorySystem() { 
+        itemList.add(new ItemInformationDTO("Apple", "AppleBarCode", 15, 0.11, 10));
+        itemList.add(new ItemInformationDTO("Milk", "MilkBarCode", 10, 0.11, 2));;
+        itemList.add(new ItemInformationDTO("Orange", "OrangeBarCode", 17, 0.11, 6));
+        itemList.add(new ItemInformationDTO("Cheese", "CheeseBarCode", 5, 0.11, 6));
+        itemList.add(new ItemInformationDTO("Potato", "PotatoBarCode", 23, 0.11, 6));
         
     } 
+   
     /**
      *  Adds a new item to the inventory where all the information about the items are stored.
      * @param item The item that is added to the inventory
@@ -39,7 +40,9 @@ public class ExternalInventorySystem {
      * @throws se.kth.iv1350.pos.integration.ItemNotFoundInInventoryException throws an exception If an item with the item identifier is not found in external inventory system.
      * @throws se.kth.iv1350.pos.integration.DatabaseServerNotRunning throws database failure exception when a search is made for a particular, hard coded,item identifier.
     */
- public ItemInformationDTO getItemInfomation (String itemIdentifier, int quantity) throws ItemNotFoundInInventoryException, DatabaseServerNotRunning{
+ public ItemInformationDTO getItemInfomation (String itemIdentifier, int quantity) throws ItemNotFoundInInventoryException, DatabaseServerNotRunning {
+     
+     ItemInformationDTO item = new ItemInformationDTO();
         for (int i = 0; i < itemList.size(); i++) {
             if (itemList.get(i).getItemIdentifier().equals(itemIdentifier)) {
                 return itemList.get(i);
@@ -47,11 +50,11 @@ public class ExternalInventorySystem {
             else if("InvalidItemName".equals(itemIdentifier)){
                 throw new DatabaseServerNotRunning("The database is currently offline");
             }
-            else{
+        }
+            if( "ItemNonExsisting".equals(itemIdentifier) )   {
                 throw new ItemNotFoundInInventoryException("This item with itemIdentifier: "+ itemIdentifier+ " was not found in inventory" );
             }
-        }
-        
+            
     return null; 
     }
     

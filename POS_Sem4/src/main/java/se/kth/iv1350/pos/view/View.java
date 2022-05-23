@@ -36,19 +36,51 @@ public class View {
         ItemInformationDTO item = new ItemInformationDTO();
         try{
             item = contr.scanItem("AppleBarCode", 10);
-            System.out.println("An item has been scanned" );
-            System.out.println("The current Running total for the sale is: "+ contr.runningTotal());
-            item = contr.scanItem("MilkBarCode", 2);
-            System.out.println("An item has been scanned");
-            System.out.println("The current Running total for the sale: "+ contr.runningTotal());
-            item = contr.scanItem("ItemNotInInventory ", 2);
+            
+        System.out.println("An item has been scanned " + item.getItemName() );
+        System.out.println("The code for the item is: " + item.getItemIdentifier());
+        System.out.println("The scanned item price is: " + item.getItemPrice() + "kr");
+        System.out.println("The quantity of the item is: " + item.getItemQuantity());
+        System.out.println("item Vat Rate, " + item.getItemVATRate() + "%");
+        System.out.println("The running total of the sale is: " + contr.runningTotal());
+        
+        System.out.println("");
+        
+       item = contr.scanItem("MilkBarCode", 2);
+        
+        System.out.println("An item has been scanned " + item.getItemName() );
+        System.out.println("The code for the item is: " + item.getItemIdentifier());
+        System.out.println("The scanned item price is: " + item.getItemPrice() + "kr");
+        System.out.println("The quantity of the item is: " + item.getItemQuantity());
+        System.out.println("item Vat Rate, " + item.getItemVATRate() + "%");
+        System.out.println("The running total of the sale is: " + contr.runningTotal());
+        
+        
+          System.out.println("");
+        
+       item = contr.scanItem("OrangeBarCode", 6);
+       
+        System.out.println("An item has been scanned " + item.getItemName() );
+        System.out.println("The code for the item is: " + item.getItemIdentifier());
+        System.out.println("The scanned item price is: " + item.getItemPrice() + "kr");
+        System.out.println("The quantity of the item is: " + item.getItemQuantity());
+        System.out.println("item Vat Rate, " + item.getItemVATRate() + "%");
+        System.out.println("The running total of the sale is: " + contr.runningTotal());
+        
+          System.out.println("");
+          
+          //item = contr.scanItem("InvalidItemName", 0);
+          item = contr.scanItem("ItemNonExsisting", 0);
+         
+         
+
             }
         catch (DatabaseServerNotRunning | ItemNotFoundInInventoryException exception){
             System.out.println(exception.getMessage());
         } 
         
         System.out.println("The total amount for the sale: "+ contr.totalAmount());
-        System.out.println("Change to give customer:  " + contr.registerPayment(500));
+        System.out.println("Change to give customer:  " + contr.registerPayment(300));
 
     }
 
